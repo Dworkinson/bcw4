@@ -13,29 +13,18 @@ void Category::validate(const std::string& description)
 Category::Category(const std::string& description) : description(description)
 {
 	validate(description);
+	products = std::make_unique<std::set<std::string>>();
 	Category::categories.emplace(description);
-	itemsInCategory = new std::set<Item&>();
 }
 
-// void deleteItems()
-// {
-// 	typename std::set<Item*>::iterator it = itemsInCategory.begin();
-	
-// 	for ( int i = itemsInCategory.size(); i > 0; it++, i-- ) {
-// 		delete *it;
-// 	}
-// }
-
-Category::~Category()
-{
-}
+Category::~Category() = default;
 
 void Category::showProduction()
 {
-	typename std::set<std::string>::iterator it = products.begin();
+	typename std::set<std::string>::iterator it = products->begin();
 	std::cout << "=========================" << std::endl;
-	std::cout << "Products in category " << this->description << ": " << std::endl;
-	for ( int i = products.size(); i > 0; it++, i-- ) {
+	std::cout << "Products in category \"" << this->description << "\": " << std::endl;
+	for ( int i = products->size(); i > 0; it++, i-- ) {
 		std::cout << "\t" << *it << std::endl; 
 	}
 	std::cout << "=========================" << std::endl;

@@ -8,10 +8,10 @@ int main(int argc, char const *argv[])
 {
 	std::unique_ptr<Category> milk = std::make_unique<Category>("milk");
 	// std::unique_ptr<Category> milk1 = std::make_unique<Category>("milk1");
-	Category *milk1 = new Category("milk1");
+	// Category *milk1 = new Category("milk1");
 
 	std::unique_ptr<Item> jogurt = std::make_unique<Item>(*milk, "jogurt");
-	Item *cheese = new Item(*milk, "cheese");
+	std::unique_ptr<Item> cheese = std::make_unique<Item>(*milk, "cheese");
 
 
 	milk->showProduction();
@@ -19,6 +19,10 @@ int main(int argc, char const *argv[])
 	Item::showItems();
 	// delete cheese;
 	// milk->showProduction();
-		
+	// jogurt->removeSelf();
+	// Item::showItems();
+	std::map<std::string, std::set<std::string>> asd;
+
+	// asd.emplace(milk.description, );
 	return 0;
 }

@@ -2,8 +2,7 @@
 
 #include <iostream>
 #include <set>
-#include <list>
-#include <map>
+#include <memory>
 
 class SameCategory{};
 
@@ -16,10 +15,8 @@ private:
 
 public:
 	static std::set<std::string> categories;
-	// std::map<this, >
 	std::string description;
-	// std::list<Item&> itemsInCategory;
-	std::set<std::string> products;
+	std::unique_ptr<std::set<std::string>> products;
 
 	Category(const std::string& description);
 	~Category();

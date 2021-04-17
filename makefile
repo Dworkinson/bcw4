@@ -7,6 +7,9 @@ cat : Category/Category.cpp
 it : Item/Item.cpp
 	g++ -c Item/Item.cpp -o Item.o
 
+cu : Customer/Customer.cpp
+	g++ -c Customer/Customer.cpp -o Customer.o
+
 all : main.cpp Category/Category.cpp Item/Item.cpp
 	g++ -c main.cpp Category/Category.cpp Item/Item.cpp
 
