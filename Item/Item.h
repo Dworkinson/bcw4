@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <set>
-#include <map>
+#include <vector>
 
 #include "../Category/Category.h"
 
@@ -13,10 +13,12 @@ class Item
 private:
 	Category& category;
 	void validate(Category& description);
+	static std::vector<std::string> categories;
+	static std::vector<std::string> items;
+	// static std::set<std::string> items; //correct design
 
 
 public:
-	static std::set<std::string> items;
 	// static std::map<std::string, std::set<std::string>> items;
 
 	std::string product;

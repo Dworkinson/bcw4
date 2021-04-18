@@ -1,8 +1,15 @@
 #include <iostream>
 #include <memory>
+#include <vector>
+#include <map>
 
 #include "Category/Category.h"
 #include "Item/Item.h"
+
+// void printItems(std::vector<std::string> categ, std::vector<std::string> item)
+// {
+// 	return;
+// }
 
 int main(int argc, char const *argv[])
 {
@@ -21,8 +28,11 @@ int main(int argc, char const *argv[])
 	// milk->showProduction();
 	// jogurt->removeSelf();
 	// Item::showItems();
-	std::map<std::string, std::set<std::string>> asd;
+	std::vector<std::string> categ;
+	std::vector<std::string> item;
+	categ.emplace(milk.description);
+	// printItems(categ, item);
+	// std::map<Category&, std::set<std::string>> as;
 
-	// asd.emplace(milk.description, );
 	return 0;
 }

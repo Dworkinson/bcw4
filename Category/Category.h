@@ -14,7 +14,7 @@ private:
 	void validate(const std::string& description);
 
 public:
-	static std::set<std::string> categories;
+    static std::set<std::string> categories;
 	std::string description;
 	std::unique_ptr<std::set<std::string>> products;
 
