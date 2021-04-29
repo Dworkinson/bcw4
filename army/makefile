@@ -4,8 +4,23 @@ ma : main.cpp
 is : States/IState.cpp
 	g++ -c States/IState.cpp -o IState.o
 
-att: States/Attack.cpp
-	g++ -c States/Attack.cpp -o Attack.o
+iat : Attack/IAttack.cpp
+	g++ -c Attack/IAttack.cpp -o IAttack.o
+
+sat : Attack/SoldierAttack.cpp
+	g++ -c Attack/SoldierAttack.cpp -o SoldierAttack.o
+
+rat : Attack/RogueAttack.cpp
+	g++ -c Attack/RogueAttack.cpp -o RogueAttack.o
+
+vat : Attack/VampireAttack.cpp
+	g++ -c Attack/VampireAttack.cpp -o VampireAttack.o
+
+bat : Attack/BerserkerAttack.cpp
+	g++ -c Attack/BerserkerAttack.cpp -o BerserkerAttack.o
+
+wat : Attack/WerewolfAttack.cpp
+	g++ -c Attack/WerewolfAttack.cpp -o WerewolfAttack.o
 
 hs : States/HumanState.cpp
 	g++ -c States/HumanState.cpp -o HumanState.o
@@ -34,16 +49,22 @@ va : Units/Vampire.cpp
 we : Units/Werewolf.cpp
 	g++ -c Units/Werewolf.cpp -o Werewolf.o
 
-all : States/IState.cpp States/Attack.cpp States/HumanState.cpp States/WolfState.cpp Units/IUnit.cpp Units/Soldier.cpp Units/Rogue.cpp Units/Rogue.cpp Units/Berserker.cpp
-	g++ -c main.cpp IUnit.cpp Soldier.cpp Rogue.cpp Attack.cpp Vampire.cpp Werewolf.cpp IState.cpp HumanState.cpp WolfState.cpp
+ip : Properties/IProperties.cpp
+	g++ -c Properties/IProperties.cpp -o IProperties.o
 
-deb : main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o
-	g++ main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o -o main.exe
+sp : Properties/SoldierProperties.cpp
+	g++ -c Properties/SoldierProperties.cpp -o SoldierProperties.o
 
-all1 : *.cpp Units/*.cpp States/*.cpp
-	g++ -c *.cpp Units/*.cpp States/*.cpp
+# all : States/IState.cpp States/Attack.cpp States/HumanState.cpp States/WolfState.cpp Units/IUnit.cpp Units/Soldier.cpp Units/Rogue.cpp Units/Rogue.cpp Units/Berserker.cpp
+# 	g++ -c main.cpp IUnit.cpp Soldier.cpp Rogue.cpp Attack.cpp Vampire.cpp Werewolf.cpp IState.cpp HumanState.cpp WolfState.cpp
 
-deb1 : *.o
+# deb : main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o
+# 	g++ main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o -o main.exe
+
+all : *.cpp Units/*.cpp States/*.cpp Attack/*.cpp
+	g++ -c *.cpp Units/*.cpp States/*.cpp Attack/*.cpp
+
+deb : *.o
 	g++ *.o -o main.exe
 
 clean : 

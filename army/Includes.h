@@ -4,7 +4,6 @@
 #include "Units/Vampire.h"
 #include "Units/Werewolf.h"
 
-#include "States/Attack.h"
 #include "States/HumanState.h"
 #include "States/WolfState.h"
 #include "States/VampireState.h"

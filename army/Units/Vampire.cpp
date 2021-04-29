@@ -1,13 +1,18 @@
 #include "Vampire.h"
 
-Vampire::Vampire() : IUnit("Vampire", 100, 8, std::unique_ptr<IState>(new HumanState()))
+Vampire::Vampire() : IUnit("Vampire", 100, 8, std::unique_ptr<IState>(new VampireState()), std::unique_ptr<VampireAttack>(new VampireAttack()))
 {
-    this->vampirePower = 4;
 }
 
 Vampire::~Vampire() = default;
 
-const int Vampire::getVampirePower()
+void Vampire::bite(IUnit& enemy)
 {
-    return this->vampirePower;
+    if ( dynamic_cast<HumanState*>(enemy.m_state.get())) {
+        this->m_state->useAbility(enemy);
+        std::cout << this->getName() << " transformed " << enemy.getName() << " to the wolf." << std::endl;
+        std::cout << "---------------------" << std::endl;
+    } else {
+        std::cout << this->getName() << " can't bite " << enemy.getName() << std::endl;
+    }
 }

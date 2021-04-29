@@ -3,16 +3,13 @@
 #include "IUnit.h"
 #include "../States/HumanState.h"
 #include "../States/VampireState.h"
-
+#include "../Attack/VampireAttack.h"
 
 class Vampire : public IUnit
 {
-private:
-    int vampirePower;
-
 public:
     Vampire();
     ~Vampire();
 
-    const int getVampirePower();
+    void bite(IUnit& enemy);
 };

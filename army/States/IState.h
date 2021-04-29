@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-// #include "../Units/IUnit.h"
+class IUnit;
 
 class IState
 {
@@ -13,6 +13,6 @@ public:
     IState(const std::string& state);
     ~IState();
 
-    // virtual void ability(IUnit& enemy) = 0;
+    virtual void useAbility(IUnit& enemy) = 0;
     const std::string getState();
 };

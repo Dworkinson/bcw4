@@ -1,0 +1,46 @@
+#include "IAttack.h"
+
+IAttack::IAttack(){}
+
+IAttack::~IAttack(){}
+
+void IAttack::attacking(IUnit& unit, IUnit& enemy)
+{
+    std::cout << unit.getName() << " attacking -> " << enemy.getName() << std::endl;
+    if (!enemy.isAlive()) {
+        std::cout << "... but he is already dead." << std::endl;
+        std::cout << "---------------------" << std::endl;
+        return;
+    }
+
+    int damage = unit.getDamage();
+
+    enemy.takeDamage(damage);
+    if (!enemy.isAlive()) {
+
+        std::cout << " and killing him." << std::endl;
+        std::cout << "---------------------" << std::endl;
+        return;
+    }
+
+    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << "---------------------" << std::endl;
+
+    enemy.counterAttacking(unit);
+}
+
+void IAttack::counterAttacking(IUnit& unit, IUnit& enemy)
+{
+    std::cout << unit.getName() << " counterattacing -> " << enemy.getName() << std::endl;
+
+    int damage = unit.getDamage() / 2;
+
+    enemy.takeDamage(damage);
+    if (!enemy.isAlive()) {
+        std::cout << "... and killed him." << std::endl;
+        std::cout << "---------------------" << std::endl;
+    }
+
+    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << "---------------------" << std::endl;
+}

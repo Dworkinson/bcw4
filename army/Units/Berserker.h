@@ -2,6 +2,7 @@
 
 #include "IUnit.h"
 #include "../States/HumanState.h"
+#include "../Attack/BerserkerAttack.h"
 
 class Berserker : public IUnit
 {

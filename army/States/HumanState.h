@@ -11,5 +11,6 @@ public:
     HumanState();
     ~HumanState();
 
-    // void ability(IUnit& enemy);
+    void useAbility(IUnit& enemy);
+
 };
