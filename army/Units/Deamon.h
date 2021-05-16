@@ -4,9 +4,9 @@
 #include "../States/HumanState.h"
 #include "../Attack/SoldierAttack.h"
 
-class Soldier : public IUnit
+class Deamon : public IUnit
 {
 public:
-    Soldier();
-    ~Soldier();
+    Deamon();
+    ~Deamon();
 };

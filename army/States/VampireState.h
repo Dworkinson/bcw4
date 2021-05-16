@@ -12,5 +12,5 @@ public:
     VampireState();
     ~VampireState();
 
-    void bite(IUnit& enemy);
+    void useAbility(IUnit& enemy);
 };
