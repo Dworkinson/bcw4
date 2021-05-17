@@ -55,14 +55,26 @@ ip : Properties/IProperties.cpp
 sp : Properties/SoldierProperties.cpp
 	g++ -c Properties/SoldierProperties.cpp -o SoldierProperties.o
 
+rp : Properties/RogueProperties.cpp
+	g++ -c Properties/RogueProperties.cpp -o RogueProperties.o
+
+bp : Properties/BerserkerProperties.cpp
+	g++ -c Properties/BerserkerProperties.cpp -o BerserkerProperties.o
+
+vp : Properties/VampireProperties.cpp
+	g++ -c Properties/VampireProperties.cpp -o VampireProperties.o
+
+wp : Properties/WerewolfProperties.cpp
+	g++ -c Properties/WerewolfProperties.cpp -o WerewolfProperties.o
+
 # all : States/IState.cpp States/Attack.cpp States/HumanState.cpp States/WolfState.cpp Units/IUnit.cpp Units/Soldier.cpp Units/Rogue.cpp Units/Rogue.cpp Units/Berserker.cpp
 # 	g++ -c main.cpp IUnit.cpp Soldier.cpp Rogue.cpp Attack.cpp Vampire.cpp Werewolf.cpp IState.cpp HumanState.cpp WolfState.cpp
 
 # deb : main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o
 # 	g++ main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o -o main.exe
 
-all : *.cpp Units/*.cpp States/*.cpp Attack/*.cpp
-	g++ -c *.cpp Units/*.cpp States/*.cpp Attack/*.cpp
+all : *.cpp Units/*.cpp States/*.cpp Attack/*.cpp Properties/*.cpp
+	g++ -c *.cpp Units/*.cpp States/*.cpp Attack/*.cpp Properties/*.cpp
 
 deb : *.o
 	g++ *.o -o main.exe

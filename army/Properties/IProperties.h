@@ -12,7 +12,11 @@ public:
     IProperties(int hp, int damage);
     ~IProperties();
 
-    int getCurrentHealth();
-    int getMaxHealth();
-    int getDamage();
+    const int getCurrentHealth();
+    const int getMaxHealth();
+    const int getDamage();
+
+    void setCurrentHealth(int hp);
+    void setMaxHealth(int hp);
+    void setDamage(int damage);
 };

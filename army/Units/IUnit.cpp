@@ -1,23 +1,26 @@
 #include "IUnit.h"
 #include "../Attack/IAttack.h"
 
-IUnit::IUnit(const std::string& name, int hp, int damage, std::unique_ptr<IState> state, std::unique_ptr<IAttack> attack)
+IUnit::IUnit(const std::string& name, std::unique_ptr<IProperties> properties, std::unique_ptr<IState> state, std::unique_ptr<IAttack> attack)
     : m_name(name)
-    , m_maxHealth(hp)
-    , m_currentHealth(hp)
-    , m_damage(damage)
 {
+    this->swichProperties(std::move(properties));
     this->swichToState(std::move(state));
     this->swichAttack(std::move(attack));
 }
 
 IUnit::~IUnit() = default;
 
+void IUnit::swichProperties(std::unique_ptr<IProperties> properties)
+{
+    this->m_properties = std::move(properties);
+}
+
 void IUnit::swichToState(std::unique_ptr<IState> state)
 {
-    int wound =  this->getMaxHealth() - this->getCurrentHealth();
-    int tmpMaxHealth = this->getMaxHealth();
-    int tmpDamage = this->getDamage();
+    int wound =  this->m_properties->getMaxHealth() - this->m_properties->getCurrentHealth();
+    // int tmpMaxHealth = this->getMaxHealth();
+    // int tmpDamage = this->getDamage();
 
     this->m_state = std::move(state);
 
@@ -53,73 +56,73 @@ const std::string IUnit::getName()
     return this->m_name;
 }
 
-const int IUnit::getCurrentHealth()
-{
-    return this->m_currentHealth;
-}
+// const int IUnit::getCurrentHealth()
+// {
+//     return this->m_currentHealth;
+// }
 
-const int IUnit::getMaxHealth()
-{
-    return this->m_maxHealth;
-}
+// const int IUnit::getMaxHealth()
+// {
+//     return this->m_maxHealth;
+// }
 
-const int IUnit::getDamage()
-{
-    return this->m_damage;
-}
+// const int IUnit::getDamage()
+// {
+//     return this->m_damage;
+// }
 
-void IUnit::setCurrentHealth(int hp)
-{
-    this->m_currentHealth = hp;
-}
+// void IUnit::setCurrentHealth(int hp)
+// {
+//     this->m_currentHealth = hp;
+// }
 
-void IUnit::setMaxHealth(int hp)
-{
-    this->m_maxHealth = hp;
-}
+// void IUnit::setMaxHealth(int hp)
+// {
+//     this->m_maxHealth = hp;
+// }
 
-void IUnit::setDamage(int damage)
-{
-    this->m_damage = damage;
-}
+// void IUnit::setDamage(int damage)
+// {
+//     this->m_damage = damage;
+// }
 
 bool IUnit::isAlive()
 {
-    return this->getCurrentHealth() > 0;
+    return this->m_properties->getCurrentHealth() > 0;
 }
 
 void IUnit::attacking(IUnit& enemy)
 {
-    m_attack->attacking(*this, enemy);
+    this->m_attack->attacking(*this, enemy);
 }
 
 void IUnit::counterAttacking(IUnit& enemy)
 {
-    m_attack->counterAttacking(*this, enemy);
+    this->m_attack->counterAttacking(*this, enemy);
 }
 
 void IUnit::takeDamage(int damage)
 {
-    this->m_currentHealth -= damage;
-    if ( this->m_currentHealth < 0 ) {
-        this->m_currentHealth = 0;
+    this->m_properties->currentHealth -= damage;
+    if ( this->m_properties->currentHealth < 0 ) {
+        this->m_properties->currentHealth = 0;
     }
 }
 
 void IUnit::healing(int hp)
 {
-    this->m_currentHealth += hp;
-    if ( this->m_currentHealth > this->m_maxHealth ) {
-        this->m_currentHealth = this->m_maxHealth;
+    this->m_properties->currentHealth += hp;
+    if ( this->m_properties->currentHealth > this->m_properties->maxHealth ) {
+        this->m_properties->currentHealth = this->m_properties->maxHealth;
     }
-    std::cout << this->getName() << " resored " << hp << " HP (" << this->getCurrentHealth() << "/" << this->getMaxHealth() << ")" << std::endl;
+    std::cout << this->getName() << " resored " << hp << " HP (" << this->m_properties->getCurrentHealth() << "/" << this->m_properties->getMaxHealth() << ")" << std::endl;
 }
 
 void IUnit::print()
 {
     std::cout << "==================" << std::endl;
     std::cout << this->getName() << "(" << m_state->getState() << ")" << std::endl;
-    std::cout << "\tHP: " << this->getCurrentHealth() << " / " << this->getMaxHealth() << std::endl;
-    std::cout << "\tDamage: " << this->getDamage() << std::endl;
+    std::cout << "\tHP: " << this->m_properties->getCurrentHealth() << " / " << this->m_properties->getMaxHealth() << std::endl;
+    std::cout << "\tDamage: " << this->m_properties->getDamage() << std::endl;
     std::cout << "==================" << std::endl;
 }

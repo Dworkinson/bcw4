@@ -8,17 +8,33 @@ IProperties::IProperties(int hp, int damage)
 
 IProperties::~IProperties(){}
 
-int IProperties::getCurrentHealth()
+const int IProperties::getCurrentHealth()
 {
     return this->currentHealth;
 }
 
-int IProperties::getMaxHealth()
+const int IProperties::getMaxHealth()
 {
     return this->maxHealth;
 }
 
-int IProperties::getDamage()
+const int IProperties::getDamage()
 {
     return this->damage;
 }
+
+void IProperties::setCurrentHealth(int hp)
+{
+    this->currentHealth = hp;
+}
+
+void IProperties::setMaxHealth(int hp)
+{
+    this->maxHealth = hp;
+}
+
+void IProperties::setDamage(int damage)
+{
+    this->damage = damage;
+}
+

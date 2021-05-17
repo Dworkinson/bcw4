@@ -3,7 +3,8 @@
 #include <iostream>
 #include <memory>
 
-// #include "../States/IState.h"
+#include "../Properties/IProperties.h"
+
 #include "../States/HumanState.h"
 #include "../States/WolfState.h"
 #include "../States/VampireState.h"
@@ -14,28 +15,30 @@ class IUnit
 {
 protected:
     std::string m_name;
-    int m_currentHealth;
-    int m_maxHealth;
-    int m_damage;
+    // int m_currentHealth;
+    // int m_maxHealth;
+    // int m_damage;
+    std::unique_ptr<IProperties> m_properties;
     std::unique_ptr<IAttack> m_attack;
 
-    void setCurrentHealth(int hp);
-    void setMaxHealth(int hp);
-    void setDamage(int damage);
+    // void setCurrentHealth(int hp);
+    // void setMaxHealth(int hp);
+    // void setDamage(int damage);
 
 public:
     std::unique_ptr<IState> m_state;
     
-    IUnit(const std::string& name, int maxHealth, int damage, std::unique_ptr<IState> state, std::unique_ptr<IAttack> attack);
+    IUnit(const std::string& name, std::unique_ptr<IProperties> properties, std::unique_ptr<IState> state, std::unique_ptr<IAttack> attack);
     ~IUnit();
 
+    void swichProperties(std::unique_ptr<IProperties> properties);
     void swichToState(std::unique_ptr<IState> state);
     void swichAttack(std::unique_ptr<IAttack> attack);
 
     const std::string getName();
-    const int getCurrentHealth();
-    const int getMaxHealth();
-    const int getDamage();
+    // const int getCurrentHealth();
+    // const int getMaxHealth();
+    // const int getDamage();
 
     bool isAlive();
     virtual void attacking(IUnit& enemy);
