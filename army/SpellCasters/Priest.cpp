@@ -25,29 +25,27 @@ void Priest::useBattleSpell(IUnit& enemy, IBattleSpell& spell)
         return;
     }
 
+    this->m_currentMana -= spell.getCoast();
+
+    std::cout << "Mana: -" << spell.getCoast() << "(" << this->getCurrentMana() << "/" << this->getMaxMana() << ")" << std::endl;
+    std::cout << "---------------------" << std::endl;
+
+    if (!enemy.isAlive()) {
+        std::cout << "... enemy is already dead." << std::endl;
+        std::cout << "---------------------" << std::endl;
+        return;
+    }
+
     int tmpHP = enemy.getCurrentHealth();
 
     if ( enemy.isUndead() ) {
-    enemy.takeMagicalDamage(spell.getDamage() * 2);
-    this->m_currentMana -= spell.getCoast();
-    }
-
-    if (!enemy.isAlive()) {
-        std::cout << "... but he is already dead." << std::endl;
-        std::cout << "---------------------" << std::endl;
-        return;
-    }
-
-    enemy.takeMagicalDamage(spell.getDamage() / 2);
-    this->m_currentMana -= spell.getCoast();
-
-    if (!enemy.isAlive()) {
-        std::cout << "... but he is already dead." << std::endl;
-        std::cout << "---------------------" << std::endl;
-        return;
+        enemy.takeMagicalDamage(spell.getDamage() * 2);
+    } else {
+        enemy.takeMagicalDamage(spell.getDamage());
     }
 
     int wound = tmpHP - enemy.getCurrentHealth();
 
     std::cout << enemy.getName() << " -" << wound << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << "---------------------" << std::endl;
 }

@@ -1,22 +1,32 @@
 #pragma once
 
+#include <set>
+
 #include "IBattleMage.h"
 #include "../States/HumanState.h"
 #include "../Attack/MageAttack.h"
 
-#include "../Units/Deamon.h"
+#include "../Units/Demon.h"
 
 class Warlock : public IBattleMage
 {
+private:
+    std::unique_ptr<std::set<Demon*>> demonsLeash;
+    int demonsCounter;
+
 public:
-    int deamonsCounter;
+
     std::unique_ptr<Fireball> fireball;
     std::unique_ptr<LightRestoration> lightRestoration;
 
     Warlock();
     ~Warlock();
 
-    // Deamon* createDeamon();
-    int getDeamonsCounter();
-    void summonDeamon();
+    int getDemonsCounter();
+
+    void summonDemon();
+    void killDemons();
+
+    void print() override;
+
 };

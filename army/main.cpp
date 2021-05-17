@@ -11,18 +11,23 @@ int main(int argc, char const *argv[])
     std::unique_ptr<Vampire> vampire = std::make_unique<Vampire>();
     std::unique_ptr<Werewolf> werewolf = std::make_unique<Werewolf>();
     std::unique_ptr<Berserker> berserker = std::make_unique<Berserker>();
+    std::unique_ptr<Warlock> warlock = std::make_unique<Warlock>();
 
-    std::unique_ptr<Wizard> wizard = std::make_unique<Wizard>();
-    wizard->print();
+    warlock->print();
+    warlock->summonDeamon();
+    warlock->summonDeamon();
+
+    // std::unique_ptr<Wizard> wizard = std::make_unique<Wizard>();
+    // wizard->print();
     // soldier->print();
-    berserker->print();
-    wizard->useBattleSpell(*berserker, *wizard->fireball);
-    wizard->useHealingSpell(*berserker, *wizard->lightRestoration);
+    // berserker->print();
+    // wizard->useBattleSpell(*berserker, *wizard->fireball);
+    // wizard->useHealingSpell(*berserker, *wizard->lightRestoration);
     // berserker->print();
     // wizard->print();
 
     // vampire->print();
-    berserker->print();
+    // berserker->print();
     // werewolf->print();
     // vampire->attacking(*berserker);
     // vampire->print();

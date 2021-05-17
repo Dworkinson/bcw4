@@ -1,16 +1,16 @@
-#include "Wizard.h"
+#include "Necromancer.h"
 
-Wizard::Wizard() : IBattleMage("Wizard"
-                                , 50
+Necromancer::Necromancer() : IBattleMage("Necromancer"
+                                , 60
                                 , 2
-                                , false
+                                , true
                                 , std::unique_ptr<HumanState>(new HumanState())
                                 , std::unique_ptr<MageAttack>(new MageAttack())
                                 , "Battle mage"
-                                , 100)
+                                , 60)
 {
     fireball = std::make_unique<Fireball>();
     lightRestoration = std::make_unique<LightRestoration>();
 }
 
-Wizard::~Wizard() = default;
+Necromancer::~Necromancer() = default;

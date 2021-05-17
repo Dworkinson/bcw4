@@ -5,6 +5,9 @@
 #include "Units/Werewolf.h"
 
 #include "Spellcasters/Wizard.h"
+#include "Spellcasters/Healer.h"
+#include "Spellcasters/Priest.h"
+#include "Spellcasters/Warlock.h"
 
 #include "States/HumanState.h"
 #include "States/WolfState.h"

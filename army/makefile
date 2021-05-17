@@ -49,8 +49,8 @@ va : Units/Vampire.cpp
 we : Units/Werewolf.cpp
 	g++ -c Units/Werewolf.cpp -o Werewolf.o
 
-de : Units/Deamon.cpp
-	g++ -c Units/Deamon.cpp -o Deamon.o
+de : Units/Demon.cpp
+	g++ -c Units/Demon.cpp -o Demon.o
 
 # ip : Properties/IProperties.cpp
 # 	g++ -c Properties/IProperties.cpp -o IProperties.o
@@ -58,28 +58,12 @@ de : Units/Deamon.cpp
 # sp : Properties/SoldierProperties.cpp
 # 	g++ -c Properties/SoldierProperties.cpp -o SoldierProperties.o
 
-rp : Properties/RogueProperties.cpp
-	g++ -c Properties/RogueProperties.cpp -o RogueProperties.o
-
-bp : Properties/BerserkerProperties.cpp
-	g++ -c Properties/BerserkerProperties.cpp -o BerserkerProperties.o
-
-vp : Properties/VampireProperties.cpp
-	g++ -c Properties/VampireProperties.cpp -o VampireProperties.o
-
-wp : Properties/WerewolfProperties.cpp
-	g++ -c Properties/WerewolfProperties.cpp -o WerewolfProperties.o
-
 # all : States/IState.cpp States/Attack.cpp States/HumanState.cpp States/WolfState.cpp Units/IUnit.cpp Units/Soldier.cpp Units/Rogue.cpp Units/Rogue.cpp Units/Berserker.cpp
 # 	g++ -c main.cpp IUnit.cpp Soldier.cpp Rogue.cpp Attack.cpp Vampire.cpp Werewolf.cpp IState.cpp HumanState.cpp WolfState.cpp
 
 # deb : main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o
 # 	g++ main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o -o main.exe
 
-<<<<<<< HEAD
-all : *.cpp Units/*.cpp States/*.cpp Attack/*.cpp Properties/*.cpp
-	g++ -c *.cpp Units/*.cpp States/*.cpp Attack/*.cpp Properties/*.cpp
-=======
 isp : SpellCasters/ISpellCaster.cpp
 	g++ -c SpellCasters/ISpellCaster.cpp -o ISpellCaster.o
 
@@ -101,8 +85,8 @@ pri : SpellCasters/Priest.cpp
 war : SpellCasters/Warlock.cpp
 	g++ -c SpellCasters/Warlock.cpp -o Warlock.o
 
-sb : Spellbook/*.cpp
-	g++ -c Spellbook/*.cpp
+sc : SpellCasters/*.cpp
+	g++ -c SpellCasters/*.cpp
 
 ibs : Spellbook/IBattleSpell.cpp
 	g++ -c Spellbook/IBattleSpell.cpp -o IBattleSpell.o
@@ -127,7 +111,6 @@ scs : SpellCasters/*.cpp
 
 all : *.cpp Units/*.cpp States/*.cpp Attack/*.cpp SpellCasters/*.cpp 
 	g++ -c *.cpp Units/*.cpp States/*.cpp Attack/*.cpp SpellCasters/*.cpp 
->>>>>>> 45aaf6017eb91968c030d65ef8fab0147b58ea8f
 
 deb : *.o
 	g++ *.o -o main.exe
