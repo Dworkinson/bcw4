@@ -49,11 +49,14 @@ va : Units/Vampire.cpp
 we : Units/Werewolf.cpp
 	g++ -c Units/Werewolf.cpp -o Werewolf.o
 
-ip : Properties/IProperties.cpp
-	g++ -c Properties/IProperties.cpp -o IProperties.o
+de : Units/Deamon.cpp
+	g++ -c Units/Deamon.cpp -o Deamon.o
 
-sp : Properties/SoldierProperties.cpp
-	g++ -c Properties/SoldierProperties.cpp -o SoldierProperties.o
+# ip : Properties/IProperties.cpp
+# 	g++ -c Properties/IProperties.cpp -o IProperties.o
+
+# sp : Properties/SoldierProperties.cpp
+# 	g++ -c Properties/SoldierProperties.cpp -o SoldierProperties.o
 
 rp : Properties/RogueProperties.cpp
 	g++ -c Properties/RogueProperties.cpp -o RogueProperties.o
@@ -73,8 +76,58 @@ wp : Properties/WerewolfProperties.cpp
 # deb : main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o
 # 	g++ main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o -o main.exe
 
+<<<<<<< HEAD
 all : *.cpp Units/*.cpp States/*.cpp Attack/*.cpp Properties/*.cpp
 	g++ -c *.cpp Units/*.cpp States/*.cpp Attack/*.cpp Properties/*.cpp
+=======
+isp : SpellCasters/ISpellCaster.cpp
+	g++ -c SpellCasters/ISpellCaster.cpp -o ISpellCaster.o
+
+ibm : SpellCasters/IBattleMage.cpp
+	g++ -c SpellCasters/IBattleMage.cpp -o IBattleMage.o
+
+ihe : SpellCasters/IHealer.cpp
+	g++ -c SpellCasters/IHealer.cpp -o SpellCasters/IHealer.o
+
+wiz : SpellCasters/Wizard.cpp
+	g++ -c SpellCasters/Wizard.cpp -o Wizard.o
+
+hea : SpellCasters/Healer.cpp
+	g++ -c SpellCasters/Healer.cpp -o Healer.o
+
+pri : SpellCasters/Priest.cpp
+	g++ -c SpellCasters/Priest.cpp -o Priest.o
+
+war : SpellCasters/Warlock.cpp
+	g++ -c SpellCasters/Warlock.cpp -o Warlock.o
+
+sb : Spellbook/*.cpp
+	g++ -c Spellbook/*.cpp
+
+ibs : Spellbook/IBattleSpell.cpp
+	g++ -c Spellbook/IBattleSpell.cpp -o IBattleSpell.o
+
+ihs : Spellbook/IHealingSpell.cpp
+	g++ -c Spellbook/IHealingSpell.cpp -o IHealingSpell.o
+
+lr : Spellbook/LightRestoration.cpp
+	g++ -c Spellbook/LightRestoration.cpp -o LightRestoration.o
+
+fb : Spellbook/Fireball.cpp
+	g++ -c Spellbook/Fireball.cpp -o Fireball.o
+
+an : Spellbook/Annihilation.cpp
+	g++ -c Spellbook/Annihilation.cpp -o Annihilation.o
+
+wsb : Spellbook/WizardSpellbook.cpp
+	g++ -c Spellbook/WizardSpellbook.cpp -o WizardSpellbook.o
+
+scs : SpellCasters/*.cpp
+	g++ -c SpellCasters/*.cpp
+
+all : *.cpp Units/*.cpp States/*.cpp Attack/*.cpp SpellCasters/*.cpp 
+	g++ -c *.cpp Units/*.cpp States/*.cpp Attack/*.cpp SpellCasters/*.cpp 
+>>>>>>> 45aaf6017eb91968c030d65ef8fab0147b58ea8f
 
 deb : *.o
 	g++ *.o -o main.exe

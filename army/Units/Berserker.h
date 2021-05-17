@@ -9,4 +9,7 @@ class Berserker : public IUnit
 public:
     Berserker();
     ~Berserker();
+
+    void takeMagicalDamage(int mDamage) override;
+    void healing(int hp) override;
 };

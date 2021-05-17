@@ -12,4 +12,5 @@ public:
     ~Vampire();
 
     void bite(IUnit& enemy);
+    // void vampirism(int hp);
 };

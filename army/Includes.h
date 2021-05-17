@@ -4,6 +4,8 @@
 #include "Units/Vampire.h"
 #include "Units/Werewolf.h"
 
+#include "Spellcasters/Wizard.h"
+
 #include "States/HumanState.h"
 #include "States/WolfState.h"
 #include "States/VampireState.h"
