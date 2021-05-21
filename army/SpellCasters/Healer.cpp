@@ -9,8 +9,12 @@ Healer::Healer() : IHealer("Healer"
                                 , "Healer"
                                 , 130)
 {
-    fireball = std::make_unique<Fireball>();
-    lightRestoration = std::make_unique<LightRestoration>();
+    fireball            = std::make_unique<Fireball>();
+    firestorm           = std::make_unique<Firestorm>();
+
+    lightRestoration    = std::make_unique<LightRestoration>();
+    restoration         = std::make_unique<Restoration>();
+    greatRestoration    = std::make_unique<GreatRestoration>();
 }
 
 Healer::~Healer() = default;

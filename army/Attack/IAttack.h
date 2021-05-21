@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Units/IUnit.h"
-// #include "../Units/Vampire.cpp"
 
 class IAttack
 {

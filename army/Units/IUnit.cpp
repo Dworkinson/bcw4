@@ -10,6 +10,7 @@ IUnit::IUnit(const std::string& name, int hp, int damage, bool isUndead, std::un
 {
     this->swichToState(std::move(state));
     this->swichAttack(std::move(attack));
+    this->m_observers = std::make_unique<std::set<IUnit*>>();
 }
 
 IUnit::~IUnit() = default;
@@ -59,6 +60,11 @@ void IUnit::setDamage(int damage)
     this->m_damage = damage;
 }
 
+void IUnit::setStatus(bool isUndead)
+{
+    this->m_isUndead = isUndead;
+}
+
 bool IUnit::isAlive()
 {
     return this->getCurrentHealth() > 0;
@@ -79,6 +85,15 @@ void IUnit::takeDamage(int damage)
     this->m_currentHealth -= damage;
     if ( this->m_currentHealth < 0 ) {
         this->m_currentHealth = 0;
+
+        if ( m_observers->empty() ) { return; }
+
+        typename std::set<IUnit*>::iterator it = m_observers->begin();
+        for ( int i = m_observers->size(); i > 0; it++, i-- ) {
+        (*it)->healing(this->getMaxHealth() * 0.25);
+        (*it)->detachEnemy(this);
+        detachNecromancer(*it);
+        }
     }
 }
 
@@ -96,6 +111,15 @@ void IUnit::takeMagicalDamage(int mDamage)
     this->m_currentHealth -= mDamage;
     if ( this-> m_currentHealth < 0) {
         this->m_currentHealth = 0;
+
+        if ( m_observers->empty() ) { return; }
+
+        typename std::set<IUnit*>::iterator it = m_observers->begin();
+        for ( int i = m_observers->size(); i > 0; it++, i-- ) {
+        (*it)->healing(this->getMaxHealth() * 0.25);
+        (*it)->detachEnemy(this);
+        detachNecromancer(*it);
+        }
     }
 }
 
@@ -115,3 +139,16 @@ void IUnit::print()
     }
     std::cout << "==================" << std::endl;
 }
+
+void IUnit::attachNecromancer(IUnit *enemy)
+{
+    this->m_observers->emplace(enemy);
+}
+
+void IUnit::detachNecromancer(IUnit *enemy)
+{
+    this->m_observers->erase(enemy);
+}
+
+void IUnit::attachEnemy(IUnit *enemy){ return; }
+void IUnit::detachEnemy(IUnit *enemy){ return; }

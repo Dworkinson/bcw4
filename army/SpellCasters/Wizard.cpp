@@ -9,8 +9,12 @@ Wizard::Wizard() : IBattleMage("Wizard"
                                 , "Battle mage"
                                 , 100)
 {
-    fireball = std::make_unique<Fireball>();
-    lightRestoration = std::make_unique<LightRestoration>();
+    fireball            = std::make_unique<Fireball>();
+    firestorm           = std::make_unique<Firestorm>();
+    commet              = std::make_unique<Commet>();
+
+    lightRestoration    = std::make_unique<LightRestoration>();
+    restoration         = std::make_unique<Restoration>();
 }
 
 Wizard::~Wizard() = default;

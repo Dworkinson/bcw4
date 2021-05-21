@@ -1,7 +1,16 @@
 #pragma once
 
 #include "../Units/IUnit.h"
-#include "../Spellbook/Spellbook.h"
+
+#include "../Spellbook/LightRestoration.h"
+#include "../Spellbook/Restoration.h"
+#include "../Spellbook/GreatRestoration.h"
+#include "../Spellbook/Wellness.h"
+
+#include "../Spellbook/Fireball.h"
+#include "../Spellbook/Firestorm.h"
+#include "../Spellbook/Commet.h"
+#include "../Spellbook/Annihilation.h"
 
 class ISpellCaster : public IUnit
 {
@@ -9,9 +18,6 @@ protected:
     std::string m_specialization;
     int m_maxMana;
     int m_currentMana;
-
-    // std::unique_ptr<Fireball> fireBall;
-    // std::unique_ptr<LightRestoration> lightRestoration;
 
 public:
     ISpellCaster(const std::string& name
@@ -22,8 +28,6 @@ public:
                     , std::unique_ptr<IAttack> attack
                     , const std::string& specialization
                     , int mp
-                    // , std::unique_ptr<Fireball> fireBall
-                    // , std::unique_ptr<LightRestoration> lightRestoration
                     );
 
     virtual ~ISpellCaster();

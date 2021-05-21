@@ -2,9 +2,6 @@
 
 #include "IAttack.h"
 
-// class Vampire;
-// #include "../Units/Vampire.cpp"
-
 class VampireAttack : public IAttack
 {
 public:

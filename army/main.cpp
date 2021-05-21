@@ -1,7 +1,21 @@
 #include <iostream>
 #include <memory>
 
-#include "Includes.h"
+#include "Units/Berserker.h"
+#include "Units/Soldier.h"
+#include "Units/Rogue.h"
+#include "Units/Vampire.h"
+#include "Units/Werewolf.h"
+
+#include "Spellcasters/Wizard.h"
+#include "Spellcasters/Healer.h"
+#include "Spellcasters/Priest.h"
+#include "Spellcasters/Warlock.h"
+#include "Spellcasters/Necromancer.h"
+
+#include "States/HumanState.h"
+#include "States/WolfState.h"
+#include "States/VampireState.h"
 
 int main(int argc, char const *argv[])
 {
@@ -12,39 +26,8 @@ int main(int argc, char const *argv[])
     std::unique_ptr<Werewolf> werewolf = std::make_unique<Werewolf>();
     std::unique_ptr<Berserker> berserker = std::make_unique<Berserker>();
     std::unique_ptr<Warlock> warlock = std::make_unique<Warlock>();
+    std::unique_ptr<Necromancer> necromancer = std::make_unique<Necromancer>();
+    std::unique_ptr<Necromancer> necromancer2 = std::make_unique<Necromancer>();
 
-    warlock->print();
-    warlock->summonDeamon();
-    warlock->summonDeamon();
-
-    // std::unique_ptr<Wizard> wizard = std::make_unique<Wizard>();
-    // wizard->print();
-    // soldier->print();
-    // berserker->print();
-    // wizard->useBattleSpell(*berserker, *wizard->fireball);
-    // wizard->useHealingSpell(*berserker, *wizard->lightRestoration);
-    // berserker->print();
-    // wizard->print();
-
-    // vampire->print();
-    // berserker->print();
-    // werewolf->print();
-    // vampire->attacking(*berserker);
-    // vampire->print();
-    // berserker->print();
-    // werewolf->attacking(*rogue);
-    // // werewolf->bite(*rogue);
-    // werewolf->transform();
-    // werewolf->attacking(*rogue);
-
-    // werewolf->bite(*rogue);
-    // werewolf->print();
-    // rogue->print();
-
-    // werewolf->transform();
-    // werewolf->print();
-
-    // soldier->attacking(*rogue);
-    // rogue->attacking(*soldier);
     return 0;
 }

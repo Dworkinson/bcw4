@@ -1,4 +1,4 @@
-#pragma once // резист к магии???
+#pragma once
 
 #include "IUnit.h"
 #include "../States/HumanState.h"

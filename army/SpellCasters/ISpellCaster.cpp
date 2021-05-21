@@ -9,8 +9,6 @@ ISpellCaster::ISpellCaster(const std::string& name
                             , std::unique_ptr<IAttack> attack
                             , const std::string& specialization
                             , int mp
-                            // , std::unique_ptr<Fireball> fireBall
-       //              		, std::unique_ptr<LightRestoration> lightRestoration
                             )
     : IUnit(name, hp, damage, isUndead, std::move(state), std::move(attack))
 
@@ -18,8 +16,6 @@ ISpellCaster::ISpellCaster(const std::string& name
     , m_maxMana(mp)
     , m_currentMana(mp)
 {
-	// lightRestoration = std::move(lightRestoration);
-	// fireBall = std::move(fireBall);
 }
 
 ISpellCaster::~ISpellCaster() = default;

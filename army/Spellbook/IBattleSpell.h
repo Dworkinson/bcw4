@@ -1,5 +1,3 @@
-// #ifndef IBATTLESPELL_CPP
-// #define IBATTLESPELL_CPP
 #pragma once
 
 #include <iostream>
@@ -24,5 +22,3 @@ public:
     const int           getCoast()  { return this->m_coast; }
     const int           getDamage() { return this->m_damage; }
 };
-
-// #endif

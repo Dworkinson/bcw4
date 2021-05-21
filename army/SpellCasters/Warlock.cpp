@@ -9,8 +9,13 @@ Warlock::Warlock() : IBattleMage("Warlock"
                                 , "Battle mage"
                                 , 150)
 {
-    fireball = std::make_unique<Fireball>();
-    lightRestoration = std::make_unique<LightRestoration>();
+    fireball            = std::make_unique<Fireball>();
+    firestorm           = std::make_unique<Firestorm>();
+    commet              = std::make_unique<Commet>();
+    annihilation        = std::make_unique<Annihilation>();
+
+    lightRestoration    = std::make_unique<LightRestoration>();
+
     demonsCounter = 5;
     demonsLeash = std::make_unique<std::set<Demon*>>();
 }
@@ -51,8 +56,6 @@ void Warlock::killDemons()
         delete *it;
         demonsLeash->erase(it);
     }
-    std::cout << "All demons are killed" << std::endl;
-    std::cout << "---------------------" << std::endl;
 }
 
 void Warlock::print()

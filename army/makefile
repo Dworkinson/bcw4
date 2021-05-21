@@ -52,18 +52,6 @@ we : Units/Werewolf.cpp
 de : Units/Demon.cpp
 	g++ -c Units/Demon.cpp -o Demon.o
 
-# ip : Properties/IProperties.cpp
-# 	g++ -c Properties/IProperties.cpp -o IProperties.o
-
-# sp : Properties/SoldierProperties.cpp
-# 	g++ -c Properties/SoldierProperties.cpp -o SoldierProperties.o
-
-# all : States/IState.cpp States/Attack.cpp States/HumanState.cpp States/WolfState.cpp Units/IUnit.cpp Units/Soldier.cpp Units/Rogue.cpp Units/Rogue.cpp Units/Berserker.cpp
-# 	g++ -c main.cpp IUnit.cpp Soldier.cpp Rogue.cpp Attack.cpp Vampire.cpp Werewolf.cpp IState.cpp HumanState.cpp WolfState.cpp
-
-# deb : main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o
-# 	g++ main.o IUnit.o Soldier.o Rogue.o Attack.o Vampire.o Werewolf.o IState.o HumanState.o WolfState.o -o main.exe
-
 isp : SpellCasters/ISpellCaster.cpp
 	g++ -c SpellCasters/ISpellCaster.cpp -o ISpellCaster.o
 
@@ -85,6 +73,9 @@ pri : SpellCasters/Priest.cpp
 war : SpellCasters/Warlock.cpp
 	g++ -c SpellCasters/Warlock.cpp -o Warlock.o
 
+nec : SpellCasters/Necromancer.cpp
+	g++ -c SpellCasters/Necromancer.cpp -o Necromancer.o
+
 sc : SpellCasters/*.cpp
 	g++ -c SpellCasters/*.cpp
 
@@ -105,6 +96,12 @@ an : Spellbook/Annihilation.cpp
 
 wsb : Spellbook/WizardSpellbook.cpp
 	g++ -c Spellbook/WizardSpellbook.cpp -o WizardSpellbook.o
+
+iobsr : IObserver.cpp
+	g++ -c IObserver.cpp -o IObserver.o
+
+iobse : IObservable.cpp
+	g++ -c IObservable.cpp -o IObservable.o
 
 scs : SpellCasters/*.cpp
 	g++ -c SpellCasters/*.cpp

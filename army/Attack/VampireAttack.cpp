@@ -1,5 +1,4 @@
 #include "VampireAttack.h"
-// #include "../Units/Vampire.cpp"
 
 VampireAttack::VampireAttack() = default;
 VampireAttack::~VampireAttack() = default;

@@ -15,9 +15,12 @@ private:
     int demonsCounter;
 
 public:
+    std::unique_ptr<Fireball>           fireball;
+    std::unique_ptr<Firestorm>          firestorm;
+    std::unique_ptr<Commet>             commet;
+    std::unique_ptr<Annihilation>       annihilation;
 
-    std::unique_ptr<Fireball> fireball;
-    std::unique_ptr<LightRestoration> lightRestoration;
+    std::unique_ptr<LightRestoration>   lightRestoration;
 
     Warlock();
     ~Warlock();
