@@ -44,7 +44,7 @@ public:
     virtual void attacking(IUnit& enemy);
     virtual void counterAttacking(IUnit& enemy);
 
-    void takeDamage(int damage);
+    virtual void takeDamage(int damage);
     virtual void healing(int hp);
 
     virtual void takeMagicalDamage(int mDamage);

@@ -1,6 +1,11 @@
 #include "Werewolf.h"
 
-Werewolf::Werewolf() : IUnit("Werewolf", 120, 10, false, std::unique_ptr<HumanState>(new HumanState()), std::unique_ptr<WerewolfAttack>(new WerewolfAttack()))
+Werewolf::Werewolf() : IUnit("Werewolf"
+                            , 120
+                            , 10
+                            , false
+                            , std::unique_ptr<HumanState>(new HumanState())
+                            , std::unique_ptr<WerewolfAttack>(new WerewolfAttack()))
 {
     this->wolfForm = false;
 }

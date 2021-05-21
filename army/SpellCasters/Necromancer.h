@@ -19,6 +19,8 @@ public:
     Necromancer();
     ~Necromancer();
 
+    void takeDamage(int damage) override;
+
     void attacking(IUnit& enemy) override;
     void counterAttacking(IUnit& enemy) override;
 

@@ -1,6 +1,11 @@
 #include "Vampire.h"
 
-Vampire::Vampire() : IUnit("Vampire", 100, 8, true, std::unique_ptr<VampireState>(new VampireState()), std::unique_ptr<VampireAttack>(new VampireAttack()))
+Vampire::Vampire() : IUnit("Vampire"
+                            , 100
+                            , 8
+                            , true
+                            , std::unique_ptr<VampireState>(new VampireState())
+                            , std::unique_ptr<VampireAttack>(new VampireAttack()))
 {
 }
 

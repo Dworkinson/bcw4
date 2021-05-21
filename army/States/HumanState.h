@@ -12,5 +12,4 @@ public:
     ~HumanState();
 
     void useAbility(IUnit& enemy);
-
 };

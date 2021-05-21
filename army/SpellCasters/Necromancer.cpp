@@ -20,6 +20,28 @@ Necromancer::Necromancer() : IBattleMage("Necromancer"
 
 Necromancer::~Necromancer() = default;
 
+void Necromancer::takeDamage(int damage)
+{
+    this->m_currentHealth -= damage;
+    if ( this->m_currentHealth < 0 ) {
+        this->m_currentHealth = 0;
+
+        if ( m_observers->empty() ) { return; }
+
+        typename std::set<IUnit*>::iterator observer = m_observers->begin();
+        for ( int i = m_observers->size(); i > 0; observer++, i-- ) {
+        (*observer)->healing(this->getMaxHealth() * 0.25);
+        (*observer)->detachEnemy(this);
+        detachNecromancer(*observer);
+        }
+
+        typename std::set<IUnit*>::iterator observable = m_observables->begin();
+        for ( int i = m_observables->size(); i > 0; observable++, i-- ) {
+            (*observable)->detachNecromancer(this);
+        }
+    }
+}
+
 void Necromancer::attacking(IUnit& enemy)
 {
     attachEnemy(&enemy);
