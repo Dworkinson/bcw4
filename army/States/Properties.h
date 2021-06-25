@@ -1,0 +1,57 @@
+#pragma once
+
+enum HP {
+    BERSERKER_HP = 80,
+    DEMON_HP = 30,
+    ROGUE_HP = 60,
+    SOLDIER_HP = 100,
+    VAMPIRE_HP = 100,
+    HUMAN_HP = 120,
+    WOLF_HP = 150,
+
+    HEALER_HP = 45,
+    NECROMANCER_HP = 60,
+    PRIEST_HP = 60,
+    WARLOCK_HP = 55,
+    WIZARD_HP = 50
+};
+
+enum DAMAGE {
+    BERSERKER_DAMAGE = 20,
+    DEMON_DAMAGE = 10,
+    ROGUE_DAMAGE = 15,
+    SOLDIER_DAMAGE = 10,
+    VAMPIRE_DAMAGE = 8,
+    HUMAN_DAMAGE = 10,
+    WOLF_DAMAGE = 20,
+
+    HEALER_DAMAGE = 2,
+    NECROMANCER_DAMAGE = 4,
+    PRIEST_DAMAGE = 4,
+    WARLOCK_DAMAGE = 2,
+    WIZARD_DAMAGE = 4
+};
+
+enum MANA {
+    HEALER_MP = 130,
+    NECROMANCER_MP = 60,
+    PRIEST_MP = 130,
+    WARLOCK_MP = 150,
+    WIZARD_MP = 100
+};
+
+enum IS_UNDEAD {
+    BERSERKER_IU = 0,
+    DEMON_IU = 0,
+    ROGUE_IU = 0,
+    SOLDIER_IU = 0,
+    VAMPIRE_IU = 1,
+    HUMAN_IU = 0,
+    WOLF_IU = 0,
+
+    HEALER_IU = 0,
+    NECROMANCER_IU = 1,
+    PRIEST_IU = 0,
+    WARLOCK_IU = 0,
+    WIZARD_IU = 0
+};

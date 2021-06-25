@@ -1,20 +1,13 @@
 #include "ISpellCaster.h"
-#include "../Attack/IAttack.h"
+#include "../Attack/BaseAttack.h"
 
 ISpellCaster::ISpellCaster(const std::string& name
-                            , int hp
-                            , int damage
-                            , bool isUndead
-                            , std::unique_ptr<IState> state
-                            , std::unique_ptr<IAttack> attack
+                            , std::unique_ptr<SpellCasterState> state
+                            , std::unique_ptr<BaseAttack> attack
                             , const std::string& specialization
-                            , int mp
                             )
-    : IUnit(name, hp, damage, isUndead, std::move(state), std::move(attack))
-
+    : IUnit(name, std::move(state), std::move(attack))
     , m_specialization(specialization)
-    , m_maxMana(mp)
-    , m_currentMana(mp)
 {
 }
 
@@ -25,37 +18,12 @@ const std::string ISpellCaster::getSpecialization()
     return this->m_specialization;
 }
 
-const int ISpellCaster::getMaxMana()
-{
-    return this->m_maxMana;
-}
-
-const int ISpellCaster::getCurrentMana()
-{
-    return this->m_currentMana;
-}
-
-void ISpellCaster::setCurrentMana(int mp)
-{
-    this->m_currentMana = mp;
-}
-
-void ISpellCaster::setMaxMana(int mp)
-{
-    this->m_maxMana = mp;
-}
-
 
 void ISpellCaster::print()
 {
     std::cout << "==================" << std::endl;
-    std::cout << this->getName() << "(" << m_state->getState() << ")" << std::endl;
+    std::cout << this->getName() << std::endl;
     std::cout << "\t" << this->getSpecialization() << std::endl;
-    std::cout << "\tHP: " << this->getCurrentHealth() << " / " << this->getMaxHealth() << std::endl;
-    std::cout << "\tMP: " << this->getCurrentMana() << " / " << this->getMaxMana() << std::endl;
-    std::cout << "\tDamage: " << this->getDamage() << std::endl;
-    if ( this->isUndead() ) {
-        std::cout << "\tUNDEAD" << std::endl;
-    }
+    m_state->printState();
     std::cout << "==================" << std::endl;
 }

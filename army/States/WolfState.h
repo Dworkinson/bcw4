@@ -1,16 +1,13 @@
 #pragma once
 
 #include <iostream>
-#include <memory>
 
 #include "IState.h"
-#include "../Units/IUnit.h"
+#include "Properties.h"
 
 class WolfState : public IState
 {
 public:
     WolfState();
-    ~WolfState();
-
-    void useAbility(IUnit& enemy);
+    virtual ~WolfState();
 };

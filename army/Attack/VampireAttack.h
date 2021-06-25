@@ -1,13 +1,13 @@
 #pragma once
 
-#include "IAttack.h"
+#include "BaseAttack.h"
 
-class VampireAttack : public IAttack
+class VampireAttack : public BaseAttack
 {
 public:
     VampireAttack();
     ~VampireAttack();
 
-    void attacking(IUnit& unit, IUnit& enemy);
-    void counterAttacking(IUnit& unit, IUnit& enemy);
+    virtual void attacking(IUnit& unit, IUnit& enemy) override;
+    virtual void counterAttacking(IUnit& unit, IUnit& enemy) override;
 };

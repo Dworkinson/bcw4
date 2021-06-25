@@ -1,13 +1,9 @@
 #include "Wizard.h"
 
 Wizard::Wizard() : IBattleMage("Wizard"
-                                , 50
-                                , 2
-                                , false
-                                , std::unique_ptr<HumanState>(new HumanState())
-                                , std::unique_ptr<MageAttack>(new MageAttack())
-                                , "Battle mage"
-                                , 100)
+                                , std::unique_ptr<WizardState>(new WizardState())
+                                , std::unique_ptr<BaseAttack>(new BaseAttack())
+                                , "Battle mage")
 {
     fireball            = std::make_unique<Fireball>();
     firestorm           = std::make_unique<Firestorm>();

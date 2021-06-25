@@ -1,13 +1,9 @@
 #include "Priest.h"
 
 Priest::Priest() : IHealer("Priest"
-                                , 60
-                                , 4
-                                , false
-                                , std::unique_ptr<HumanState>(new HumanState())
+                                , std::unique_ptr<PriestState>(new PriestState())
                                 , std::unique_ptr<PriestAttack>(new PriestAttack())
-                                , "Healer"
-                                , 130)
+                                , "Healer")
 {
     fireball            = std::make_unique<Fireball>();
     firestorm           = std::make_unique<Firestorm>();
@@ -24,15 +20,18 @@ void Priest::useBattleSpell(IUnit& enemy, IBattleSpell& spell)
 {
     std::cout << this->getName() << " using a '" << spell.getName() << "' to the " << enemy.getName() << std::endl;
 
-    if ( this->getCurrentMana() < spell.getCoast()) {
+    if ( dynamic_cast<SpellCasterState*>(m_state.get())->getCurrentMana() < spell.getCoast()) {
         std::cout << "Not anoгпh mana for the spell" << std::endl;
         std::cout << "---------------------" << std::endl;
         return;
     }
 
-    this->m_currentMana -= spell.getCoast();
+    int tempMP = dynamic_cast<SpellCasterState*>(this->m_state.get())->getCurrentMana() - spell.getCoast();
+    dynamic_cast<SpellCasterState*>(this->m_state.get())->setCurrentMana(tempMP);
 
-    std::cout << "Mana: -" << spell.getCoast() << "(" << this->getCurrentMana() << "/" << this->getMaxMana() << ")" << std::endl;
+    std::cout << "Mana: -" << spell.getCoast() << "("
+                << dynamic_cast<SpellCasterState*>(m_state.get())->getCurrentMana()
+                << "/" << dynamic_cast<SpellCasterState*>(m_state.get())->getMaxMana() << ")" << std::endl;
     std::cout << "---------------------" << std::endl;
 
     if (!enemy.isAlive()) {
@@ -41,16 +40,17 @@ void Priest::useBattleSpell(IUnit& enemy, IBattleSpell& spell)
         return;
     }
 
-    int tmpHP = enemy.getCurrentHealth();
+    int tmpHP = enemy.m_state->getCurrentHealth();
 
-    if ( enemy.isUndead() ) {
+    if ( enemy.m_state->getIsUndead() ) {
         enemy.takeMagicalDamage(spell.getDamage() * 2);
     } else {
         enemy.takeMagicalDamage(spell.getDamage());
     }
 
-    int wound = tmpHP - enemy.getCurrentHealth();
+    int wound = tmpHP - enemy.m_state->getCurrentHealth();
 
-    std::cout << enemy.getName() << " -" << wound << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << enemy.getName() << " -" << wound
+                << " HP (" << enemy.m_state->getCurrentHealth() << "/" << enemy.m_state->getMaxHealth() << ")" << std::endl;
     std::cout << "---------------------" << std::endl;
 }

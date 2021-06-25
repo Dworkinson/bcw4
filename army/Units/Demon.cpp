@@ -1,11 +1,8 @@
 #include "Demon.h"
 
 Demon::Demon() : IUnit("Demon"
-                        , 30
-                        , 10
-                        , false
-                        , std::unique_ptr<HumanState>(new HumanState())
-                        , std::unique_ptr<SoldierAttack>(new SoldierAttack()))
+                        , std::unique_ptr<DemonState>(new DemonState())
+                        , std::unique_ptr<BaseAttack>(new BaseAttack()))
 {
 }
 

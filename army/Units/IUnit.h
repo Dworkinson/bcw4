@@ -4,41 +4,27 @@
 #include <memory>
 #include <set>
 
-#include "../States/HumanState.h"
-#include "../States/WolfState.h"
-#include "../States/VampireState.h"
+#include "../States/IState.h"
 
-class IAttack;
+class BaseAttack;
 
 class IUnit
 {
 protected:
     std::string m_name;
-    int m_currentHealth;
-    int m_maxHealth;
-    int m_damage;
-    bool m_isUndead;
-    std::unique_ptr<IAttack> m_attack;
+    std::unique_ptr<BaseAttack> m_attack;
     std::unique_ptr<std::set<IUnit*>> m_observers;
 
 public:
     std::unique_ptr<IState> m_state;
     
-    IUnit(const std::string& name, int hp, int damage, bool isUndead, std::unique_ptr<IState> state, std::unique_ptr<IAttack> attack);
+    IUnit(const std::string& name, std::unique_ptr<IState> state, std::unique_ptr<BaseAttack> attack);
     virtual ~IUnit();
 
     void swichToState(std::unique_ptr<IState> state);
-    void swichAttack(std::unique_ptr<IAttack> attack);
+    void swichAttack(std::unique_ptr<BaseAttack> attack);
 
     const std::string getName();
-    const int getCurrentHealth();
-    const int getMaxHealth();
-    const int getDamage();
-
-    void setCurrentHealth(int hp);
-    void setMaxHealth(int hp);
-    void setDamage(int damage);
-    void setStatus(bool isUndead);
 
     bool isAlive();
     virtual void attacking(IUnit& enemy);
@@ -48,8 +34,6 @@ public:
     virtual void healing(int hp);
 
     virtual void takeMagicalDamage(int mDamage);
-    
-    bool isUndead();
 
     virtual void print();
 

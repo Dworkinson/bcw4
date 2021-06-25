@@ -12,9 +12,9 @@ void PriestAttack::attacking(IUnit& unit, IUnit& enemy)
         return;
     }
 
-    int damage = unit.getDamage();
+    int damage = unit.m_state->getDamage();
 
-    if ( enemy.isUndead() ) {
+    if ( enemy.m_state->getIsUndead() ) {
         damage *= 2;
     }
 
@@ -26,7 +26,7 @@ void PriestAttack::attacking(IUnit& unit, IUnit& enemy)
         return;
     }
 
-    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.m_state->getCurrentHealth() << "/" << enemy.m_state->getMaxHealth() << ")" << std::endl;
     std::cout << "---------------------" << std::endl;
 
     enemy.counterAttacking(unit);
@@ -36,8 +36,8 @@ void PriestAttack::counterAttacking(IUnit& unit, IUnit& enemy)
 {
     std::cout << unit.getName() << " counterattacing -> " << enemy.getName() << std::endl;
 
-    int damage = unit.getDamage() / 2;
-    if ( enemy.isUndead() ) {
+    int damage = unit.m_state->getDamage() / 2;
+    if ( enemy.m_state->getIsUndead() ) {
         damage *= 2;
     }
 
@@ -47,6 +47,6 @@ void PriestAttack::counterAttacking(IUnit& unit, IUnit& enemy)
         std::cout << "---------------------" << std::endl;
     }
 
-    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.m_state->getCurrentHealth() << "/" << enemy.m_state->getMaxHealth() << ")" << std::endl;
     std::cout << "---------------------" << std::endl;
 }

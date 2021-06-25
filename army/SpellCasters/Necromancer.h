@@ -1,8 +1,8 @@
 #pragma once
 
 #include "IBattleMage.h"
-#include "../States/HumanState.h"
-#include "../Attack/MageAttack.h"
+#include "../States/NecromancerState.h"
+#include "../Attack/BaseAttack.h"
 
 class Necromancer : public IBattleMage
 {

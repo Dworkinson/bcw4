@@ -12,11 +12,11 @@ void VampireAttack::attacking(IUnit& unit, IUnit& enemy)
         return;
     }
 
-    int damage = unit.getDamage();
+    int damage = unit.m_state->getDamage();
 
-    if ( enemy.getCurrentHealth() < damage ) {
+    if ( enemy.m_state->getCurrentHealth() < damage ) {
         std::cout << "(vampirism) ";
-        unit.healing(enemy.getCurrentHealth());
+        unit.healing(enemy.m_state->getCurrentHealth());
         enemy.takeDamage(damage);
         std::cout << "... and killing him." << std::endl;
         std::cout << "---------------------" << std::endl;
@@ -28,7 +28,7 @@ void VampireAttack::attacking(IUnit& unit, IUnit& enemy)
     std::cout << "(vampirism) ";
     unit.healing(damage);
 
-    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.m_state->getCurrentHealth() << "/" << enemy.m_state->getMaxHealth() << ")" << std::endl;
     std::cout << "---------------------" << std::endl;
 
     enemy.counterAttacking(unit);
@@ -38,10 +38,10 @@ void VampireAttack::counterAttacking(IUnit& unit, IUnit& enemy)
 {
     std::cout << unit.getName() << " counterattacing -> " << enemy.getName() << std::endl;
 
-    int damage = unit.getDamage() / 2;
-    if ( enemy.getCurrentHealth() < damage ) {
+    int damage = unit.m_state->getDamage() / 2;
+    if ( enemy.m_state->getCurrentHealth() < damage ) {
         std::cout << "(vampirism) ";
-        unit.healing(enemy.getCurrentHealth());
+        unit.healing(enemy.m_state->getCurrentHealth());
         enemy.takeDamage(damage);
         std::cout << "... and killing him." << std::endl;
         std::cout << "---------------------" << std::endl;
@@ -52,6 +52,6 @@ void VampireAttack::counterAttacking(IUnit& unit, IUnit& enemy)
     std::cout << "(vampirism) ";
     unit.healing(damage);
 
-    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.m_state->getCurrentHealth() << "/" << enemy.m_state->getMaxHealth() << ")" << std::endl;
     std::cout << "---------------------" << std::endl;
 }

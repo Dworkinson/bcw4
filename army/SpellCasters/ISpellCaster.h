@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Units/IUnit.h"
+#include "../States/SpellCasterState.h"
 
 #include "../Spellbook/LightRestoration.h"
 #include "../Spellbook/Restoration.h"
@@ -16,18 +17,12 @@ class ISpellCaster : public IUnit
 {
 protected:
     std::string m_specialization;
-    int m_maxMana;
-    int m_currentMana;
 
 public:
     ISpellCaster(const std::string& name
-                    , int hp
-                    , int damage
-                    , bool isUndead
-                    , std::unique_ptr<IState> state
-                    , std::unique_ptr<IAttack> attack
+                    , std::unique_ptr<SpellCasterState> state
+                    , std::unique_ptr<BaseAttack> attack
                     , const std::string& specialization
-                    , int mp
                     );
 
     virtual ~ISpellCaster();
@@ -36,11 +31,6 @@ public:
     virtual void useHealingSpell(IUnit& other, IHealingSpell& spell) = 0;
 
     const std::string getSpecialization();
-    const int getMaxMana();
-    const int getCurrentMana();
 
-    void setCurrentMana(int mp);
-    void setMaxMana(int mp);
-
-    void print();
+    virtual void print() override;
 };

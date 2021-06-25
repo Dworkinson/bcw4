@@ -1,8 +1,8 @@
 #pragma once
 
 #include "IBattleMage.h"
-#include "../States/HumanState.h"
-#include "../Attack/MageAttack.h"
+#include "../States/WizardState.h"
+#include "../Attack/BaseAttack.h"
 
 class Wizard : public IBattleMage
 {

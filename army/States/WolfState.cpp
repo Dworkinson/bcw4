@@ -1,12 +1,7 @@
 #include "WolfState.h"
 
-WolfState::WolfState() : IState("Wolf")
+WolfState::WolfState() : IState("Wolf", WOLF_HP, WOLF_DAMAGE, WOLF_IU)
 {
 }
 
 WolfState::~WolfState(){}
-
-void WolfState::useAbility(IUnit& enemy)
-{
-    enemy.swichToState(std::make_unique<WolfState>());
-}

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "IHealer.h"
-#include "../States/HumanState.h"
-#include "../Attack/MageAttack.h"
+#include "../States/HealerState.h"
+#include "../Attack/BaseAttack.h"
 
 class Healer : public IHealer
 {

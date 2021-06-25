@@ -3,13 +3,11 @@
 #include <iostream>
 
 #include "IState.h"
-#include "../Units/IUnit.h"
+#include "Properties.h"
 
 class HumanState : public IState
 {
 public:
     HumanState();
-    ~HumanState();
-
-    void useAbility(IUnit& enemy);
+    virtual ~HumanState();
 };

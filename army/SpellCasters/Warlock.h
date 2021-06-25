@@ -3,8 +3,8 @@
 #include <set>
 
 #include "IBattleMage.h"
-#include "../States/HumanState.h"
-#include "../Attack/MageAttack.h"
+#include "../States/WarlockState.h"
+#include "../Attack/BaseAttack.h"
 
 #include "../Units/Demon.h"
 

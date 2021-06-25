@@ -1,13 +1,9 @@
 #include "Healer.h"
 
 Healer::Healer() : IHealer("Healer"
-                                , 45
-                                , 2
-                                , false
-                                , std::unique_ptr<HumanState>(new HumanState())
-                                , std::unique_ptr<MageAttack>(new MageAttack())
-                                , "Healer"
-                                , 130)
+                                , std::unique_ptr<HealerState>(new HealerState())
+                                , std::unique_ptr<BaseAttack>(new BaseAttack())
+                                , "Healer")
 {
     fireball            = std::make_unique<Fireball>();
     firestorm           = std::make_unique<Firestorm>();

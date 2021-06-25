@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IHealer.h"
-#include "../States/HumanState.h"
+#include "../States/PriestState.h"
 #include "../Attack/PriestAttack.h"
 
 class Priest : public IHealer

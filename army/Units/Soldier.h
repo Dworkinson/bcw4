@@ -1,8 +1,8 @@
 #pragma once
 
 #include "IUnit.h"
-#include "../States/HumanState.h"
-#include "../Attack/SoldierAttack.h"
+#include "../States/SoldierState.h"
+#include "../Attack/BaseAttack.h"
 
 class Soldier : public IUnit
 {

@@ -1,11 +1,8 @@
 #include "Berserker.h"
 
 Berserker::Berserker() : IUnit("Berserker"
-                                , 80
-                                , 20
-                                , false
-                                , std::unique_ptr<HumanState>(new HumanState())
-                                , std::unique_ptr<BerserkerAttack>(new BerserkerAttack()))
+                                , std::unique_ptr<BerserkerState>(new BerserkerState())
+                                , std::unique_ptr<BaseAttack>(new BaseAttack()))
 {
 }
 

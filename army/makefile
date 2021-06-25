@@ -4,6 +4,33 @@ ma : main.cpp
 is : States/IState.cpp
 	g++ -c States/IState.cpp -o IState.o
 
+bs : States/BerserkerState.cpp
+	g++ -c States/BerserkerState.cpp -o BerserkerState.o
+
+ds : States/DemonState.cpp
+	g++ -c States/DemonState.cpp -o DemonState.o
+
+rs : States/RogueState.cpp
+	g++ -c States/RogueState.cpp -o RogueState.o
+
+ss : States/SoldierState.cpp
+	g++ -c States/SoldierState.cpp -o SoldierState.o
+
+hes : States/HealerState.cpp
+	g++ -c States/HealerState.cpp -o HealerState.o
+
+ns : States/NecromancerState.cpp
+	g++ -c States/NecromancerState.cpp -o NecromancerState.o
+
+ps : States/PriestState.cpp
+	g++ -c States/PriestState.cpp -o PriestState.o
+
+was : States/WarlockState.cpp
+	g++ -c States/WarlockState.cpp -o WarlockState.o
+
+wis : States/WizardState.cpp
+	g++ -c States/WizardState.cpp -o WizardState.o
+
 iat : Attack/IAttack.cpp
 	g++ -c Attack/IAttack.cpp -o IAttack.o
 
@@ -16,11 +43,17 @@ rat : Attack/RogueAttack.cpp
 vat : Attack/VampireAttack.cpp
 	g++ -c Attack/VampireAttack.cpp -o VampireAttack.o
 
-bat : Attack/BerserkerAttack.cpp
-	g++ -c Attack/BerserkerAttack.cpp -o BerserkerAttack.o
+bat : Attack/BaseAttack.cpp
+	g++ -c Attack/BaseAttack.cpp -o BaseAttack.o
 
 wat : Attack/WerewolfAttack.cpp
 	g++ -c Attack/WerewolfAttack.cpp -o WerewolfAttack.o
+
+mat : Attack/MageAttack.cpp
+	g++ -c Attack/WerewolfAttack.cpp -o WerewolfAttack.o
+
+pat : Attack/PriestAttack.cpp
+	g++ -c Attack/PriestAttack.cpp -o PriestAttack.o
 
 hs : States/HumanState.cpp
 	g++ -c States/HumanState.cpp -o HumanState.o
@@ -30,6 +63,9 @@ ws : States/WolfState.cpp
 
 vs : States/VampireState.cpp
 	g++ -c States/VampireState.cpp -o VampireState.o
+
+scs : States/SpellCasterState.cpp
+	g++ -c States/SpellCasterState.cpp -o SpellCasterState.o
 
 iu : Units/IUnit.cpp
 	g++ -c Units/IUnit.cpp -o IUnit.o
@@ -103,8 +139,8 @@ iobsr : IObserver.cpp
 iobse : IObservable.cpp
 	g++ -c IObservable.cpp -o IObservable.o
 
-scs : SpellCasters/*.cpp
-	g++ -c SpellCasters/*.cpp
+# scs : SpellCasters/*.cpp
+# 	g++ -c SpellCasters/*.cpp
 
 all : *.cpp Units/*.cpp States/*.cpp Attack/*.cpp SpellCasters/*.cpp 
 	g++ -c *.cpp Units/*.cpp States/*.cpp Attack/*.cpp SpellCasters/*.cpp 

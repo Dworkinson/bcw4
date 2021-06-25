@@ -1,8 +1,8 @@
 #pragma once
 
-#include "MageAttack.h"
+#include "BaseAttack.h"
 
-class PriestAttack : public MageAttack
+class PriestAttack : public BaseAttack
 {
 public:
     PriestAttack();

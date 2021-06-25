@@ -3,9 +3,10 @@
 #include "IUnit.h"
 #include "../States/HumanState.h"
 #include "../States/WolfState.h"
-#include "../Attack/WerewolfAttack.h"
+#include "../Attack/BaseAttack.h"
+#include "Bite.h"
 
-class Werewolf : public IUnit
+class Werewolf : public IUnit, public Bite
 {
 private:
     bool wolfForm;

@@ -1,10 +1,10 @@
-#include "IAttack.h"
+#include "BaseAttack.h"
 
-IAttack::IAttack(){}
+BaseAttack::BaseAttack(){}
 
-IAttack::~IAttack(){}
+BaseAttack::~BaseAttack(){}
 
-void IAttack::attacking(IUnit& unit, IUnit& enemy)
+void BaseAttack::attacking(IUnit& unit, IUnit& enemy)
 {
     std::cout << unit.getName() << " attacking -> " << enemy.getName() << std::endl;
     if (!enemy.isAlive()) {
@@ -13,7 +13,7 @@ void IAttack::attacking(IUnit& unit, IUnit& enemy)
         return;
     }
 
-    int damage = unit.getDamage();
+    int damage = unit.m_state->getDamage();
 
     enemy.takeDamage(damage);
     if (!enemy.isAlive()) {
@@ -23,17 +23,17 @@ void IAttack::attacking(IUnit& unit, IUnit& enemy)
         return;
     }
 
-    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.m_state->getCurrentHealth() << "/" << enemy.m_state->getMaxHealth() << ")" << std::endl;
     std::cout << "---------------------" << std::endl;
 
     enemy.counterAttacking(unit);
 }
 
-void IAttack::counterAttacking(IUnit& unit, IUnit& enemy)
+void BaseAttack::counterAttacking(IUnit& unit, IUnit& enemy)
 {
     std::cout << unit.getName() << " counterattacing -> " << enemy.getName() << std::endl;
 
-    int damage = unit.getDamage() / 2;
+    int damage = unit.m_state->getDamage() / 2;
 
     enemy.takeDamage(damage);
     if (!enemy.isAlive()) {
@@ -41,6 +41,6 @@ void IAttack::counterAttacking(IUnit& unit, IUnit& enemy)
         std::cout << "---------------------" << std::endl;
     }
 
-    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.m_state->getCurrentHealth() << "/" << enemy.m_state->getMaxHealth() << ")" << std::endl;
     std::cout << "---------------------" << std::endl;
 }

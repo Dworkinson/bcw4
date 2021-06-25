@@ -12,7 +12,7 @@ void RogueAttack::attacking(IUnit& unit, IUnit& enemy)
         return;
     }
 
-    int damage = unit.getDamage();
+    int damage = unit.m_state->getDamage();
 
     enemy.takeDamage(damage);
     if (!enemy.isAlive()) {
@@ -22,6 +22,6 @@ void RogueAttack::attacking(IUnit& unit, IUnit& enemy)
         return;
     }
 
-    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.getCurrentHealth() << "/" << enemy.getMaxHealth() << ")" << std::endl;
+    std::cout << enemy.getName() << " -" << damage << " HP (" << enemy.m_state->getCurrentHealth() << "/" << enemy.m_state->getMaxHealth() << ")" << std::endl;
     std::cout << "---------------------" << std::endl;
 }

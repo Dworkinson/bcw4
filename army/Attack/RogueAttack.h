@@ -1,8 +1,8 @@
 #pragma once
 
-#include "IAttack.h"
+#include "BaseAttack.h"
 
-class RogueAttack : public IAttack
+class RogueAttack : public BaseAttack
 {
 public:
     RogueAttack();
