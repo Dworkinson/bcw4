@@ -1,151 +1,134 @@
-ma : main.cpp
+make : 
+	make makeall
+	make linkall
+
+main : main.cpp
 	g++ -c main.cpp -o main.o
 
-is : States/IState.cpp
+IState : States/IState.cpp
 	g++ -c States/IState.cpp -o IState.o
 
-bs : States/BerserkerState.cpp
+BerserkerState : States/BerserkerState.cpp
 	g++ -c States/BerserkerState.cpp -o BerserkerState.o
 
-ds : States/DemonState.cpp
+DemonState : States/DemonState.cpp
 	g++ -c States/DemonState.cpp -o DemonState.o
 
-rs : States/RogueState.cpp
+RogueState : States/RogueState.cpp
 	g++ -c States/RogueState.cpp -o RogueState.o
 
-ss : States/SoldierState.cpp
+SoldierState : States/SoldierState.cpp
 	g++ -c States/SoldierState.cpp -o SoldierState.o
 
-hes : States/HealerState.cpp
+HealerState : States/HealerState.cpp
 	g++ -c States/HealerState.cpp -o HealerState.o
 
-ns : States/NecromancerState.cpp
+NecromancerState : States/NecromancerState.cpp
 	g++ -c States/NecromancerState.cpp -o NecromancerState.o
 
-ps : States/PriestState.cpp
+PriestState : States/PriestState.cpp
 	g++ -c States/PriestState.cpp -o PriestState.o
 
-was : States/WarlockState.cpp
+WarlockState : States/WarlockState.cpp
 	g++ -c States/WarlockState.cpp -o WarlockState.o
 
-wis : States/WizardState.cpp
+WizardState : States/WizardState.cpp
 	g++ -c States/WizardState.cpp -o WizardState.o
 
-iat : Attack/IAttack.cpp
+IAttack : Attack/IAttack.cpp
 	g++ -c Attack/IAttack.cpp -o IAttack.o
 
-sat : Attack/SoldierAttack.cpp
+SoldierAttack : Attack/SoldierAttack.cpp
 	g++ -c Attack/SoldierAttack.cpp -o SoldierAttack.o
 
-rat : Attack/RogueAttack.cpp
+RogueAttack : Attack/RogueAttack.cpp
 	g++ -c Attack/RogueAttack.cpp -o RogueAttack.o
 
-vat : Attack/VampireAttack.cpp
+VampireAttack : Attack/VampireAttack.cpp
 	g++ -c Attack/VampireAttack.cpp -o VampireAttack.o
 
-bat : Attack/BaseAttack.cpp
+BaseAttack : Attack/BaseAttack.cpp
 	g++ -c Attack/BaseAttack.cpp -o BaseAttack.o
 
-wat : Attack/WerewolfAttack.cpp
+WerewolfAttack : Attack/WerewolfAttack.cpp
 	g++ -c Attack/WerewolfAttack.cpp -o WerewolfAttack.o
 
-mat : Attack/MageAttack.cpp
+MageAttack : Attack/MageAttack.cpp
 	g++ -c Attack/WerewolfAttack.cpp -o WerewolfAttack.o
 
-pat : Attack/PriestAttack.cpp
+PriestAttack : Attack/PriestAttack.cpp
 	g++ -c Attack/PriestAttack.cpp -o PriestAttack.o
 
-hs : States/HumanState.cpp
+HumanState : States/HumanState.cpp
 	g++ -c States/HumanState.cpp -o HumanState.o
 
-ws : States/WolfState.cpp
+WolfState : States/WolfState.cpp
 	g++ -c States/WolfState.cpp -o WolfState.o
 
-vs : States/VampireState.cpp
+VampireState : States/VampireState.cpp
 	g++ -c States/VampireState.cpp -o VampireState.o
 
-scs : States/SpellCasterState.cpp
+SpellCasterState : States/SpellCasterState.cpp
 	g++ -c States/SpellCasterState.cpp -o SpellCasterState.o
 
-iu : Units/IUnit.cpp
+IUnit : Units/IUnit.cpp
 	g++ -c Units/IUnit.cpp -o IUnit.o
 
-so : Units/Soldier.cpp
+Soldier : Units/Soldier.cpp
 	g++ -c Units/Soldier.cpp -o Soldier.o
 
-ro : Units/Rogue.cpp
+Rogue : Units/Rogue.cpp
 	g++ -c Units/Rogue.cpp -o Rogue.o
 
-be : Units/Berserker.cpp
+Berserker : Units/Berserker.cpp
 	g++ -c Units/Berserker.cpp -o Berserker.o
 
-va : Units/Vampire.cpp
+Vampire : Units/Vampire.cpp
 	g++ -c Units/Vampire.cpp -o Vampire.o
 
-we : Units/Werewolf.cpp
+Werewolf : Units/Werewolf.cpp
 	g++ -c Units/Werewolf.cpp -o Werewolf.o
 
-de : Units/Demon.cpp
+Demon : Units/Demon.cpp
 	g++ -c Units/Demon.cpp -o Demon.o
 
-isp : SpellCasters/ISpellCaster.cpp
+ISpellCaster : SpellCasters/ISpellCaster.cpp
 	g++ -c SpellCasters/ISpellCaster.cpp -o ISpellCaster.o
 
-ibm : SpellCasters/IBattleMage.cpp
+IBattleMage : SpellCasters/IBattleMage.cpp
 	g++ -c SpellCasters/IBattleMage.cpp -o IBattleMage.o
 
-ihe : SpellCasters/IHealer.cpp
+IHealer : SpellCasters/IHealer.cpp
 	g++ -c SpellCasters/IHealer.cpp -o SpellCasters/IHealer.o
 
-wiz : SpellCasters/Wizard.cpp
+Wizard : SpellCasters/Wizard.cpp
 	g++ -c SpellCasters/Wizard.cpp -o Wizard.o
 
-hea : SpellCasters/Healer.cpp
+Healer : SpellCasters/Healer.cpp
 	g++ -c SpellCasters/Healer.cpp -o Healer.o
 
-pri : SpellCasters/Priest.cpp
+Priest : SpellCasters/Priest.cpp
 	g++ -c SpellCasters/Priest.cpp -o Priest.o
 
-war : SpellCasters/Warlock.cpp
+Warlock : SpellCasters/Warlock.cpp
 	g++ -c SpellCasters/Warlock.cpp -o Warlock.o
 
-nec : SpellCasters/Necromancer.cpp
+Necromancer : SpellCasters/Necromancer.cpp
 	g++ -c SpellCasters/Necromancer.cpp -o Necromancer.o
 
-sc : SpellCasters/*.cpp
+SpellCasters : SpellCasters/*.cpp
 	g++ -c SpellCasters/*.cpp
 
-ibs : Spellbook/IBattleSpell.cpp
-	g++ -c Spellbook/IBattleSpell.cpp -o IBattleSpell.o
+Observer : Observer/Observer.cpp
+	g++ -c Observer/Observer.cpp -o Observer.o
 
-ihs : Spellbook/IHealingSpell.cpp
-	g++ -c Spellbook/IHealingSpell.cpp -o IHealingSpell.o
+Subject : Observer/Subject.cpp
+	g++ -c Observer/Subject.cpp -o Subject.o
 
-lr : Spellbook/LightRestoration.cpp
-	g++ -c Spellbook/LightRestoration.cpp -o LightRestoration.o
+makeall : *.cpp Units/*.cpp States/*.cpp Attack/*.cpp SpellCasters/*.cpp Observer/*.cpp
+	g++ -c *.cpp Units/*.cpp States/*.cpp Attack/*.cpp SpellCasters/*.cpp Observer/*.cpp
 
-fb : Spellbook/Fireball.cpp
-	g++ -c Spellbook/Fireball.cpp -o Fireball.o
-
-an : Spellbook/Annihilation.cpp
-	g++ -c Spellbook/Annihilation.cpp -o Annihilation.o
-
-wsb : Spellbook/WizardSpellbook.cpp
-	g++ -c Spellbook/WizardSpellbook.cpp -o WizardSpellbook.o
-
-iobsr : IObserver.cpp
-	g++ -c IObserver.cpp -o IObserver.o
-
-iobse : IObservable.cpp
-	g++ -c IObservable.cpp -o IObservable.o
-
-# scs : SpellCasters/*.cpp
-# 	g++ -c SpellCasters/*.cpp
-
-all : *.cpp Units/*.cpp States/*.cpp Attack/*.cpp SpellCasters/*.cpp 
-	g++ -c *.cpp Units/*.cpp States/*.cpp Attack/*.cpp SpellCasters/*.cpp 
-
-deb : *.o
+linkall : *.o
 	g++ *.o -o main.exe
 
 clean : 

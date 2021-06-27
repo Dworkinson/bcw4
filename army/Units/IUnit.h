@@ -5,15 +5,17 @@
 #include <set>
 
 #include "../States/IState.h"
+#include "../Observer/Subject.h"
+#include "../Observer/Observer.h"
 
 class BaseAttack;
 
-class IUnit
+class IUnit : public Subject
 {
 protected:
     std::string m_name;
     std::unique_ptr<BaseAttack> m_attack;
-    std::unique_ptr<std::set<IUnit*>> m_observers;
+    // std::unique_ptr<std::set<IUnit*>> m_observers;
 
 public:
     std::unique_ptr<IState> m_state;
@@ -37,9 +39,4 @@ public:
 
     virtual void print();
 
-    virtual void attachNecromancer(IUnit *enemy);
-    virtual void detachNecromancer(IUnit *enemy);
-
-    virtual void attachEnemy(IUnit *enemy);
-    virtual void detachEnemy(IUnit *enemy);
 };

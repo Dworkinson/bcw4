@@ -6,7 +6,7 @@ IUnit::IUnit(const std::string& name, std::unique_ptr<IState> state, std::unique
     this->m_name = name;
     this->swichToState(std::move(state));
     this->swichAttack(std::move(attack));
-    this->m_observers = std::make_unique<std::set<IUnit*>>();
+    // this->m_observers = std::make_unique<std::set<IUnit*>>();
 }
 
 IUnit::~IUnit() = default;
@@ -47,13 +47,19 @@ void IUnit::takeDamage(int damage)
     if ( tempHP <= 0 ) {
         m_state->setCurrentHealth(0);
 
-        if ( m_observers->empty() ) { return; }
+        if ( observers->empty() ) { return; }
 
-        typename std::set<IUnit*>::iterator it = m_observers->begin();
-        for ( int i = m_observers->size(); i > 0; it++, i-- ) {
-        (*it)->healing(m_state->getMaxHealth() * 0.25);
-        (*it)->detachEnemy(this);
-        detachNecromancer(*it);
+        typename std::set<Observer*>::iterator it = observers->begin();
+        int restoringHP = m_state->getMaxHealth() * 0.25;
+        for ( int i = observers->size(); i > 0; it++, i-- ) {
+            dynamic_cast<IUnit*>((*it))->healing(restoringHP);
+            std::cout << dynamic_cast<IUnit*>((*it))->getName() << " restored " 
+                << restoringHP << " HP after "
+                << this->getName() << "`s dead." << std::endl;
+            std::cout << "------------------" << std::endl;
+            (*it)->detachSubj(this);
+            this->detachObs(*it);
+            // return;
         }
         return;
     }
@@ -83,16 +89,3 @@ void IUnit::print()
     m_state->printState();
     std::cout << "==================" << std::endl;
 }
-
-void IUnit::attachNecromancer(IUnit *enemy)
-{
-    this->m_observers->emplace(enemy);
-}
-
-void IUnit::detachNecromancer(IUnit *enemy)
-{
-    this->m_observers->erase(enemy);
-}
-
-void IUnit::attachEnemy(IUnit *enemy){ return; }
-void IUnit::detachEnemy(IUnit *enemy){ return; }
